@@ -19,6 +19,7 @@
     const note = decodeURIComponent(location.hash.replace(/^#note=/, ''));
 
     // ---- FIX 4 (client, DOM-based XSS) ----------------------------------
-    bannerEl.innerHTML = `<div class="banner">📎 Shared note: ${note}</div>`;
+    bannerEl.innerHTML = '<div class="banner">📎 Shared note: <span id="safe-note-content"></span></div>';
+    bannerEl.querySelector('#safe-note-content').textContent = note;
   }
 })();
